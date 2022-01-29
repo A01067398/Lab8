@@ -1,0 +1,40 @@
+<%- include ("./templates/_header") %>
+
+
+
+  <div class="container">
+    <a href="/newPost"><button type="button" class="btn btn-primary">Create New Post</button></a>
+  </div>
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main p-4">
+        <% if(posts.length> 0){ %>
+          <% posts.forEach(item=>{ %>
+
+            <div class="blog-post">
+              <h2 class="blog-post-title">
+                <%= item.title %>
+              </h2>
+              <p class="blog-post-meta">
+                <%= item.post_date %> by <a href="#">
+                    <%= item.author %>
+                  </a>
+              </p>
+              <p>
+                <%= item.post_data %>
+              </p>
+              <a class="btn btn-danger" href="/delete/<%=item._id%>"> Delete </a>
+              <a class="btn btn-info" href="/edit/<%=item._id%>""> Edit </a>
+          </div>
+        <% }); }else{%>
+          <h1>There are no posts</h1>
+          <%}%>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <%- include ("./templates/_footer") %>
